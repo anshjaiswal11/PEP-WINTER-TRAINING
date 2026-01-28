@@ -17,3 +17,26 @@ my_car = audi(4, 4, "V6", 300)
 my_car.display_info()
             
 print(my_car.horsepower)
+
+
+
+
+
+# class methods and class variables
+class car:
+    base_price = 100000
+    def __init__(self, windows, doors, power):
+        self.windows = windows
+        self.doors = doors
+        self.power = power
+    def what_base_price(self):
+        print(f"Base price of car is {car.base_price}")
+
+    @classmethod
+    def update_base_price(cls, new_price):
+        cls.base_price = new_price
+        print(f"Base price updated to {cls.base_price}")
+my_car = car(4, 4, "150hp")
+my_car.what_base_price()
+car.update_base_price(1500000)
+my_car.what_base_price()
