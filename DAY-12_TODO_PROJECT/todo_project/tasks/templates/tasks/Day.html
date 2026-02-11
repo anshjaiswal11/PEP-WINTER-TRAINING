@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day Planner</title>
+</head>
+<body>
+
+<h2>Create Day</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="day_title" placeholder="Day title (Day 1)">
+    <br><br>
+
+    <input type="text" name="task_name" placeholder="Task 1"><br>
+    <input type="text" name="task_name" placeholder="Task 2"><br>
+    <input type="text" name="task_name" placeholder="Task 3"><br>
+
+    <br>
+    <button type="submit">Save Day</button>
+</form>
+
+<hr>
+
+<h2>Days & Tasks</h2>
+
+{% for day in days %}
+    <h3>{{ day.title }}</h3>
+    <ul>
+        {% for task in day.tasks.all %}
+            <li>{{ task.name }}</li>
+        {% empty %}
+            <li>No tasks</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>
